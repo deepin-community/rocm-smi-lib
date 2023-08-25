@@ -1,5 +1,76 @@
-template-repository (1.0-1) unstable; urgency=medium
+rocm-smi-lib (5.2.3-2) unstable; urgency=medium
 
-  * Initial release
+  * d/control: use shorthand "ROCm" in packages descriptions instead of the
+    long form.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Étienne Mollier <emollier@debian.org>  Fri, 02 Dec 2022 23:10:31 +0100
+
+rocm-smi-lib (5.2.3-1) unstable; urgency=medium
+
+  * Migrate ROCm 5.2.3 to unstable.
+  * d/*.symbols renamed d/*.symbols.amd64: work around ftbfs on non-amd64.
+
+ -- Étienne Mollier <emollier@debian.org>  Mon, 17 Oct 2022 22:05:33 +0200
+
+rocm-smi-lib (5.2.3-1~0exp0) experimental; urgency=medium
+
+  * New upstream version
+
+ -- Étienne Mollier <emollier@debian.org>  Mon, 05 Sep 2022 21:00:19 +0200
+
+rocm-smi-lib (5.2.0-2) unstable; urgency=medium
+
+  * d/*.symbols: adjust for armel and riscv64. (Closes: #1014318)
+
+ -- Étienne Mollier <emollier@debian.org>  Tue, 05 Jul 2022 07:57:32 +0200
+
+rocm-smi-lib (5.2.0-1) unstable; urgency=medium
+
+  * New upstream version
+  * Reorder sequence of d/control fields by cme (routine-update)
+  * d/{*.install,not-installed}: adjust to new posix layout.
+  * d/librocm-smi-dev.docs: update documents location.
+  * d/control: remove build-dep to dh-exec: not in use anymore.
+  * d/rules: refman.pdf renaming not needed anymore.
+  * d/*.symbols: append new symbols with this release.
+  * d/*.symbols: adjust for 32-bit architectures support.
+  * d/copyright: remove files which are not shipped anymore.
+  * Add 0005-dotdot.patch: fix library location when running rocm-smi.
+  * Adjust 0002-use-soversioned-library.patch: fix rsmiBindings.py too.
+
+ -- Étienne Mollier <emollier@debian.org>  Sun, 03 Jul 2022 19:00:36 +0200
+
+rocm-smi-lib (5.1.0-4) unstable; urgency=medium
+
+  * d/control: make -dev packages depend on corresponding libraries.
+  * Add 0004-gcc-12.patch to fix ftbfs with Gcc 12.
+    Thanks to Torsten Keßler (Closes: #1013031)
+  * d/*.symbols: mark some compiler dependent symbols optional.
+    This allows build against gcc-11 or gcc-12 with a single symbols file.
+  * d/control: mark liboam-dev Architecture: any.
+    This change is necessary to make the package binNMU-able per lintian
+    error report.
+  * d/control: declare compliance to standards version 4.6.1.
+
+ -- Étienne Mollier <emollier@debian.org>  Mon, 20 Jun 2022 23:24:04 +0200
+
+rocm-smi-lib (5.1.0-3) unstable; urgency=medium
+
+  * d/rules: clean up d/tmp from unused rocm_smi.py in architecture independent
+    builds; this fixes failure to build architecture independent packages from
+    source.
+  * Add 0003-clean-amd64-flags.patch: fix build failures on non x86_64 hosts.
+
+ -- Étienne Mollier <emollier@debian.org>  Tue, 12 Apr 2022 22:31:31 +0200
+
+rocm-smi-lib (5.1.0-2) unstable; urgency=medium
+
+  * Source only upload.
+
+ -- Étienne Mollier <emollier@debian.org>  Tue, 12 Apr 2022 20:27:18 +0200
+
+rocm-smi-lib (5.1.0-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #961006)
+
+ -- Étienne Mollier <emollier@debian.org>  Wed, 06 Apr 2022 23:09:47 +0200

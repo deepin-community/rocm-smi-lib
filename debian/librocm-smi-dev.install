@@ -1,0 +1,3 @@
+usr/include/rocm_smi usr/include
+usr/lib/librocm_smi64.so usr/lib
+usr/lib/cmake usr/lib

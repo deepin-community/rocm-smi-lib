@@ -1,0 +1,25 @@
+Description: cleanup architecture specific build flags
+ This should prevent some failure to build from source on non-amd64 targets.
+Author: Étienne Mollier <emollier@debian.org>
+Forwarded: https://github.com/RadeonOpenCompute/rocm_smi_lib/pull/105
+Last-Update: 2022-04-12
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- rocm-smi-lib.orig/CMakeLists.txt
++++ rocm-smi-lib/CMakeLists.txt
+@@ -64,8 +64,13 @@
+ endif()
+ 
+ ## Compiler flags
+-set(CMAKE_CXX_FLAGS
+- "${CMAKE_CXX_FLAGS} -Wall -Wextra -fno-rtti -m64 -msse -msse2 -std=c++11 ")
++if (${CMAKE_HOST_SYSTEM_PROCESSOR} STREQUAL "x86_64")
++    set(CMAKE_CXX_FLAGS
++     "${CMAKE_CXX_FLAGS} -Wall -Wextra -fno-rtti -m64 -msse -msse2 -std=c++11 ")
++else ()
++    set(CMAKE_CXX_FLAGS
++     "${CMAKE_CXX_FLAGS} -Wall -Wextra -fno-rtti -std=c++11 ")
++endif ()
+ # Security options
+ set(CMAKE_CXX_FLAGS
+  "${CMAKE_CXX_FLAGS} -Wconversion -Wcast-align ")

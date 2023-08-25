@@ -1,0 +1,17 @@
+Description: fix a case of missing a double dot to fetch the library.
+Author: Étienne Mollier <emollier@debian.org>
+Forwarded: no
+Last-Update: 2022-07-03
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- rocm-smi-lib.orig/python_smi_tools/rocm_smi.py
++++ rocm-smi-lib/python_smi_tools/rocm_smi.py
+@@ -26,7 +26,7 @@
+ 
+ 
+ # Use ROCm installation path if running from standard installation
+-path_librocm = os.path.dirname(os.path.realpath(__file__)) + '/../lib/librocm_smi64.so.1'
++path_librocm = os.path.dirname(os.path.realpath(__file__)) + '/../../lib/librocm_smi64.so.1'
+ if not os.path.isfile(path_librocm):
+     print('Unable to find %s . Trying /opt/rocm*' % path_librocm)
+     for root, dirs, files in os.walk('/opt', followlinks=True):
