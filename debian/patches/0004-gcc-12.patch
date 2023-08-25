@@ -1,0 +1,19 @@
+Description: fix ftbfs with Gcc 12
+Author: Torsten Keßler
+Bug: https://github.com/RadeonOpenCompute/rocm_smi_lib/issues/106
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1013031
+Applied-Upstream: https://github.com/RadeonOpenCompute/rocm_smi_lib/pull/107/commits/447bf22557c875ca7d26a72d20561feb607ed300
+Reviewed-by: Étienne Mollier <emollier@debian.org
+Last-Update: 2022-06-20
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- rocm-smi-lib.orig/src/rocm_smi_gpu_metrics.cc
++++ rocm-smi-lib/src/rocm_smi_gpu_metrics.cc
+@@ -53,6 +53,7 @@
+ #include <regex>  // NOLINT
+ #include <vector>
+ #include <pthread.h>
++#include <string.h>
+ 
+ #include "rocm_smi/rocm_smi_common.h"  // Should go before rocm_smi.h
+ #include "rocm_smi/rocm_smi_main.h"

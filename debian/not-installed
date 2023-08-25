@@ -1,0 +1,5 @@
+# non-posix paths
+usr/oam/*
+usr/rocm_smi/*
+# duplicate license file
+usr/share/doc/rocm_smi/LICENSE.txt

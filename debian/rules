@@ -1,4 +1,10 @@
 #!/usr/bin/make -f
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+# export CC=clang
+# export CXX=clang++
 
 %:
-	dh $@
+	dh $@ -Scmake
+
+execute_before_dh_missing-indep:
+	rm -vf $(CURDIR)/debian/tmp/usr/bin/rocm_smi.py

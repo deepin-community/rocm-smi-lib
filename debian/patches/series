@@ -1,0 +1,5 @@
+0001-Merged-python-rsmi-bindings-into-the-main-file.patch
+0002-use-soversioned-library.patch
+0003-clean-amd64-flags.patch
+0004-gcc-12.patch
+0005-dotdot.patch
